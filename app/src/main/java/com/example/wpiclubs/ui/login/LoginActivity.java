@@ -2,8 +2,13 @@ package com.example.wpiclubs.ui.login;
 
 import android.app.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+import java.lang.Object;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.media.Image;
@@ -17,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -30,8 +36,15 @@ import android.widget.Toast;
 
 import com.example.wpiclubs.MainActivity;
 import com.example.wpiclubs.R;
+
 import com.example.wpiclubs.ui.login.LoginViewModel;
 import com.example.wpiclubs.ui.login.LoginViewModelFactory;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.OAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,24 +60,13 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
-        final ImageView wpi_logo=findViewById(R.id.wpi_logo);
+        ImageView wpi_logo=(ImageView)findViewById(R.id.wpi_logo);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
+
+
+
+
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
@@ -125,13 +127,14 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
 
 
+
             }
         });
 
         wpi_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String wpi="www.wpi.edu";
+                String wpi="http://www.wpi.edu";
                 Uri address=Uri.parse(wpi);
 
                 Intent goToWPI=new Intent(Intent.ACTION_VIEW, address);
@@ -149,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+//        login();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -156,4 +160,62 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+//    public void logOut(View view){
+//        FirebaseAuth.getInstance().signOut();
+//    }
+//    public void login(){
+//        OAuthProvider.Builder provider = OAuthProvider.newBuilder("microsoft.com");
+//
+//        // Force re-consent.
+//        provider.addCustomParameter("prompt", "consent");
+//
+//// Target specific email with login hint.
+//        provider.addCustomParameter("login_hint", "user@wpi.edu");
+////
+//////        Task<AuthResult> pendingResultTask = FirebaseAuth.getPendingAuthResult();
+////        if (pendingResultTask != null) {
+////            // There's something already here! Finish the sign-in for your user.
+////            pendingResultTask
+////                    .addOnSuccessListener(
+////                            new OnSuccessListener<AuthResult>() {
+////                                @Override
+////                                public void onSuccess(AuthResult authResult) {
+////                                    // User is signed in.
+////                                    // IdP data available in
+////                                    // authResult.getAdditionalUserInfo().getProfile().
+////                                    // The OAuth access token can also be retrieved:
+////                                    // authResult.getCredential().getAccessToken().
+////                                }
+////                            })
+////                    .addOnFailureListener(
+////                            new OnFailureListener() {
+////                                @Override
+////                                public void onFailure(@NonNull Exception e) {
+////                                    // Handle failure.
+////                                }
+////                            });
+////        } else {
+////            FirebaseAuth
+////                    .startActivityForSignInWithProvider(/* activity= */ this, provider.build())
+////                    .addOnSuccessListener(
+////                            new OnSuccessListener<AuthResult>() {
+////                                @Override
+////                                public void onSuccess(AuthResult authResult) {
+////                                    // User is signed in.
+////                                    // IdP data available in
+////                                    // authResult.getAdditionalUserInfo().getProfile().
+////                                    // The OAuth access token can also be retrieved:
+////                                    // authResult.getCredential().getAccessToken().
+////                                }
+////                            })
+////                    .addOnFailureListener(
+////                            new OnFailureListener() {
+////                                @Override
+////                                public void onFailure(@NonNull Exception e) {
+////                                    // Handle failure.
+////                                }
+////                            });
+////        }
+//    }
 }

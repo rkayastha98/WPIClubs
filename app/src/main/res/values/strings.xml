@@ -20,9 +20,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_myClubs">My Clubs</string>
     <string name="menu_explore">Explore</string>
-    <string name="menu_myRequests">My Requests</string>
+    <string name="menu_notifs">Notifications</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="menu_logout">Log Out</string>
 
     <string name="main_name">WPI Clubs</string>
 </resources>

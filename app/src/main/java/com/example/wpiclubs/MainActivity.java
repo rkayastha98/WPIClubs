@@ -87,16 +87,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_clubs) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_explore) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_notifs) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
+//        } else if (id == R.id.log_out) {
+//
+//        }
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

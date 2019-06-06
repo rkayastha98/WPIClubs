@@ -6,20 +6,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/nav_clubs"
+            android:icon="@drawable/ic_people_black_24dp"
             android:title="@string/menu_myClubs" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/nav_explore"
+            android:icon="@drawable/ic_public_black_24dp"
             android:title="@string/menu_explore" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_myRequests" />
+            android:id="@+id/nav_notifs"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/menu_notifs" />
     </group>
 
     <item android:title="Communicate">
@@ -32,6 +32,11 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_send" />
+            <!--<item-->
+                <!--android:id="@+id/log_out"-->
+                <!--android:icon="@drawable/ic_subdirectory_arrow_left_black_24dp"-->
+                <!--android:title="@string/menu_logout"-->
+                <!--android:onClick="logOut"/>-->
         </menu>
     </item>
 
