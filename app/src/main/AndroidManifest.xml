@@ -5,6 +5,9 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -15,16 +18,30 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--Intent filter to catch Microsoft's callback after Sign In-->
+        <!--<activity-->
+            <!--android:name="com.microsoft.identity.client.BrowserTabActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+
+                <!--&lt;!&ndash;Add in your scheme/host from registered redirect URI&ndash;&gt;-->
+                <!--<data android:scheme="msauth"-->
+                    <!--android:host="com.example.wpiclubs"-->
+                    <!--android:path="/wOsd384IlOLOiEyx977pjPNpot0=" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
         <meta-data
             android:name="preloaded_fonts"

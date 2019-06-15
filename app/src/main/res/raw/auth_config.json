@@ -1,0 +1,14 @@
+{
+  "client_id" : "478f5c8f-f979-46d0-a334-28df1e2bcbd6",
+  "authorization_user_agent" : "DEFAULT",
+  "redirect_uri" : "msauth://com.example.wpiclubs/wOsd384IlOLOiEyx977pjPNpot0%3D",
+  "authorities" : [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADMultipleOrgs",
+        "tenant_id": "organizations"
+      }
+    }
+  ]
+}
