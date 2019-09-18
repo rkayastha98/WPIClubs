@@ -29,9 +29,10 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="@string/menu_logout" />
+
             <!--<item-->
                 <!--android:id="@+id/log_out"-->
                 <!--android:icon="@drawable/ic_subdirectory_arrow_left_black_24dp"-->

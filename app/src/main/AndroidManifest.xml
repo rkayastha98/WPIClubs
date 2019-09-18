@@ -28,20 +28,20 @@
             </intent-filter>
         </activity>
 
-        <!--Intent filter to catch Microsoft's callback after Sign In-->
-        <!--<activity-->
-            <!--android:name="com.microsoft.identity.client.BrowserTabActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
 
-                <!--&lt;!&ndash;Add in your scheme/host from registered redirect URI&ndash;&gt;-->
-                <!--<data android:scheme="msauth"-->
-                    <!--android:host="com.example.wpiclubs"-->
-                    <!--android:path="/wOsd384IlOLOiEyx977pjPNpot0=" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
+
+        <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
+        <activity
+            android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msauth"
+                    android:host="com.example.wpiclubs"
+                    android:path="/wOsd384IlOLOiEyx977pjPNpot0=" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
